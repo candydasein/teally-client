@@ -9,6 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import TeaIndex from './views/TeaIndex.js'
+import TastingCreate from './views/TastingCreate.js'
 
 class App extends Component {
   constructor () {
@@ -34,11 +35,12 @@ class App extends Component {
     }), 2000)
   }
 
+ 
   render () {
     const { flashMessage, flashType, user } = this.state
 
     return (
-      <React.Fragment>
+      <div>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         
@@ -57,7 +59,21 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
         </main>
-      </React.Fragment>
+        <div>
+          <Route exact path='/create-tasting' render={() => (
+            <TastingCreate user={user}/>
+          )} />
+          <h1>Teally</h1>
+          <ul>
+            <li>
+              <Link to='/create-tasting'>Create a Tasting</Link>
+            </li>
+            <li>
+              <Link to='/teas/'>All Teas</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
     )
   }
 }
