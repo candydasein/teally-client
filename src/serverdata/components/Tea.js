@@ -1,11 +1,14 @@
 import React from 'react'
 
 const Tea = props => {
+  console.log(props)
   return (
     <div>
-      <h3>Name: { props.data.name }</h3>
-      <h4>Type: { props.data.family }</h4>
-      <h4>Country: { props.data.country }</h4>
+      <dl className="row">
+        <dt className="col-sm-3">Name: { props.data.name }</dt>
+        <dd className="col-sm-9">Type: { props.data.family }</dd>
+        <dd className="col-sm-9">Country: { props.data.country }</dd>
+      </dl>
     </div>
   )
 }
