@@ -70,17 +70,19 @@ class TastingCreate extends Component {
     return (
       <div className="dropdown">
         {/* <label htmlFor="sel1"></label> */}
-      
-        <select required
-          name="tea"
-          onChange={this.onTeaChange}>
-          {TeasInDropdown}
-        </select> 
-        <select required
-          name="flavors"
-          onChange={this.onFlavorsChange}>
-          {FlavorsInDropdown}
-        </select> 
+        <form onSubmit={ this.createTasting }>
+          <select required
+            name="tea"
+            onChange={ this.onTeaChange }>
+            {TeasInDropdown}
+          </select> 
+          <select required
+            name="flavors"
+            onChange={this.onFlavorsChange}>
+            {FlavorsInDropdown}
+          </select>
+          <input type="submit" value="Create Tasting" /> 
+        </form>
       </div>
     )
   }

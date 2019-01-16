@@ -77,7 +77,6 @@ class App extends Component {
             //here pass in all teas as a prop into TastingCreate
             />
           )} />
-          <h1>Teally</h1>
           <ul>
             <li>
               <Link to='/create-tasting'>Create a Tasting</Link>
