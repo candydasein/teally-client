@@ -6,6 +6,7 @@ import axios from 'axios'
 import Select from 'react-select'
 import Animated from 'react-select/lib/animated'
 import TeaDropdown from '../serverdata/components/TeaDropdown.js'
+import FlavorDropdown from '../serverdata/components/FlavorDropdown.js'
 
 //the name of the component should match the name
 // of the file
@@ -33,7 +34,7 @@ class TastingCreate extends Component {
         tea_id: this.state.tea,
         // user_id: this.,
         // tea_id: 1,
-        flavors:[2, 3, 4]
+        flavors: this.state.flavors
       }
     })
       .then(response => this.setState({ message: `made a new tasting with ID: ${response.data.tasting.id}` }))
@@ -59,15 +60,26 @@ class TastingCreate extends Component {
       )
     })
 
+    const FlavorsInDropdown = this.props.flavors.map((data, index) => {
+      return (
+        <FlavorDropdown key={ index }
+          name={ data.name } />
+      )
+    })
+
     return (
       <div className="dropdown">
         {/* <label htmlFor="sel1"></label> */}
       
         <select required
           name="tea"
-          text="Select Your Tea"
           onChange={this.onTeaChange}>
           {TeasInDropdown}
+        </select> 
+        <select required
+          name="flavors"
+          onChange={this.onFlavorsChange}>
+          {FlavorsInDropdown}
         </select> 
       </div>
     )

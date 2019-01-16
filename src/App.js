@@ -20,7 +20,8 @@ class App extends Component {
       user: null,
       flashMessage: '',
       flashType: null,
-      teas: []
+      teas: [],
+      flavors: []
     }
   }
 
@@ -41,6 +42,10 @@ class App extends Component {
     axios.get('http://localhost:4741/teas')
       .then(res => {
         this.setState({teas: res.data.teas }) 
+      })
+    axios.get('http://localhost:4741/flavors')
+      .then(res => {
+        this.setState({flavors: res.data.flavors }) 
       })
   }
 
@@ -68,7 +73,7 @@ class App extends Component {
         </main>
         <div>
           <Route exact path='/create-tasting' render={() => (
-            <TastingCreate user={user} teas={this.state.teas}
+            <TastingCreate user={user} teas={this.state.teas} flavors={this.state.flavors}
             //here pass in all teas as a prop into TastingCreate
             />
           )} />
