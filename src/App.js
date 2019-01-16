@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import TeaIndex from './views/TeaIndex.js'
 import TastingCreate from './views/TastingCreate.js'
+import axios from 'axios'
 
 class App extends Component {
   constructor () {
@@ -18,7 +19,8 @@ class App extends Component {
     this.state = {
       user: null,
       flashMessage: '',
-      flashType: null
+      flashType: null,
+      teas: []
     }
   }
 
@@ -35,10 +37,15 @@ class App extends Component {
     }), 2000)
   }
 
- 
+  componentDidMount () {
+    axios.get('http://localhost:4741/teas')
+      .then(res => {
+        this.setState({teas: res.data.teas }) 
+      })
+  }
+
   render () {
     const { flashMessage, flashType, user } = this.state
-
     return (
       <div>
         <Header user={user} />
@@ -61,7 +68,9 @@ class App extends Component {
         </main>
         <div>
           <Route exact path='/create-tasting' render={() => (
-            <TastingCreate user={user}/>
+            <TastingCreate user={user} teas={this.state.teas}
+            //here pass in all teas as a prop into TastingCreate
+            />
           )} />
           <h1>Teally</h1>
           <ul>

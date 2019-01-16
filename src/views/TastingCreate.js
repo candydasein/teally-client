@@ -3,18 +3,20 @@
 // component
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import Select from 'react-select'
+import Animated from 'react-select/lib/animated'
+import TeaDropdown from '../serverdata/components/TeaDropdown.js'
 
 //the name of the component should match the name
 // of the file
-// make sure to extend the Component class
+// make sure to extend the Component className
 class TastingCreate extends Component {
 
   // this is your basic constructor setup
   constructor(props) {
     super(props)
     this.state = {
-      tea: 0,
+      tea: '',
       flavors: [], 
       message: null
     }
@@ -41,26 +43,53 @@ class TastingCreate extends Component {
   onTeaChange = event => {
     this.setState({ tea: event.target.value })
   }
-
+  //here event.target.value needs to come from dropdown
   onFlavorsChange = event => {
     this.setState({ flavors: event.target.value })
   }
-
+  
+  
+  
   render() {
+    console.log(this.props)
+    const TeasInDropdown = this.props.teas.map((data, index) => {
+      return (
+        <TeaDropdown key={ index }
+          name={ data.name } />
+      )
+    })
+    // const teaChoices = [
+    //   { value: 'chocolate', label: 'Chocolate' },
+    //   { value: 'strawberry', label: 'Strawberry' },
+    //   { value: 'vanilla', label: 'Vanilla' }
+    // ]
+
+    // const teaSelector = () => (
+    //   <Select teaChoices={teaChoices} />
+    // )
+
     return (
       <div>
-        <form onSubmit={ this.createTasting }>
-          <input type="number"
-            placeholder="Tea"
-            value={ this.state.tea }
-            onChange={ this.onTeaChange } />
-          <input type="number"
-            placeholder="Flavors"
-            value={ this.state.flavors }
-            onChange={ this.onFlavorsChange } />
-          <input type="submit"
-            value="Create Tasting!" />
-        </form>
+        <div className="form-group">
+          <label htmlFor="sel1">Select Tea:</label>
+          {TeasInDropdown}
+        </div>
+        {/* <form onSubmit={ this.createTasting }> */}
+      
+
+  
+
+        <input type="d"
+          placeholder="Tea"
+          value={ this.state.tea }
+          onChange={ this.onTeaChange } />
+        <input type="checkbox"
+          placeholder="Flavors"
+          value={ this.state.flavors }
+          onChange={ this.onFlavorsChange } />
+        <input type="submit"
+          value="Create Tasting!" />
+       
         {this.state.message && <span>{ this.state.message} </span> }
       </div>
     )
