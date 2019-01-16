@@ -58,39 +58,17 @@ class TastingCreate extends Component {
           name={ data.name } />
       )
     })
-    // const teaChoices = [
-    //   { value: 'chocolate', label: 'Chocolate' },
-    //   { value: 'strawberry', label: 'Strawberry' },
-    //   { value: 'vanilla', label: 'Vanilla' }
-    // ]
-
-    // const teaSelector = () => (
-    //   <Select teaChoices={teaChoices} />
-    // )
 
     return (
-      <div>
-        <div className="form-group">
-          <label htmlFor="sel1">Select Tea:</label>
-          {TeasInDropdown}
-        </div>
-        {/* <form onSubmit={ this.createTasting }> */}
+      <div className="dropdown">
+        {/* <label htmlFor="sel1"></label> */}
       
-
-  
-
-        <input type="d"
-          placeholder="Tea"
-          value={ this.state.tea }
-          onChange={ this.onTeaChange } />
-        <input type="checkbox"
-          placeholder="Flavors"
-          value={ this.state.flavors }
-          onChange={ this.onFlavorsChange } />
-        <input type="submit"
-          value="Create Tasting!" />
-       
-        {this.state.message && <span>{ this.state.message} </span> }
+        <select required
+          name="tea"
+          text="Select Your Tea"
+          onChange={this.onTeaChange}>
+          {TeasInDropdown}
+        </select> 
       </div>
     )
   }
