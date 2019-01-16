@@ -3,8 +3,6 @@
 // component
 import React, { Component } from 'react'
 import axios from 'axios'
-import TeaDropdown from '../serverdata/components/TeaDropdown.js'
-import FlavorDropdown from '../serverdata/components/FlavorDropdown.js'
 
 //the name of the component should match the name
 // of the file
@@ -18,7 +16,7 @@ class TastingCreate extends Component {
       tea: '',
       tea_id: null,
       flavors: [],
-      flavor_id: null,
+      flavor_ids: [null],
       message: null
     }
   }
@@ -36,7 +34,7 @@ class TastingCreate extends Component {
         tea_id: Number(this.state.tea_id),
         // user_id: this.,
         // tea_id: 1,
-        flavors: [Number(this.state.flavor_id)],
+        flavors: [Number(this.state.flavor_ids)],
       }
     })
       .then(response => this.setState({ message: `made a new tasting with ID: ${response.data.tasting.id}` }))
@@ -49,32 +47,22 @@ class TastingCreate extends Component {
   } 
   //here event.target.value needs to come from dropdown
   onFlavorsChange = event => {
-    console.log('event.selectedOptions[0].getAttribute is', event.target.selectedOptions[0].getAttribute('data-key'))
-    this.setState({ flavor: event.target.value, flavor_id: event.target.selectedOptions[0].getAttribute('data-key')  } )
+    console.log('event.target.value is', event.target.value)
+    this.setState({ flavors: [event.target.value] } )
   }
 
   render () {
     return (
-      <div className="dropdown">
+      <div>
         <form onSubmit={ this.createTasting }>
           <select required
-            // key={ this.props.tea.id }
-            //value={ this.state.tea.id }
             onChange={ this.onTeaChange }>
             {this.props.teas.map((tea) => {
               return (
                 <option key={tea.id} data-key={tea.id}>{ tea.name }</option>
               )})}
           </select> 
-        
-          {/* <TeaDropdown key={ index }
-          name={ data.name } />
-           */}
-        
-          
-          <select
-            // key={this.state.flavor[id]}
-            //value={ this.state.flavors }
+          <select multiple value={[this.state.flavors]} 
             onChange={this.onFlavorsChange}>
             {this.props.flavors.map((flavor) => {
               return (
