@@ -3,8 +3,6 @@
 // component
 import React, { Component } from 'react'
 import axios from 'axios'
-import Select from 'react-select'
-import Animated from 'react-select/lib/animated'
 import TeaDropdown from '../serverdata/components/TeaDropdown.js'
 import FlavorDropdown from '../serverdata/components/FlavorDropdown.js'
 
@@ -18,23 +16,27 @@ class TastingCreate extends Component {
     super(props)
     this.state = {
       tea: '',
-      flavors: [], 
+      tea_id: null,
+      flavors: [],
+      flavor_id: null,
       message: null
     }
   }
 
   createTasting = (props) => {
+    console.log(this.props.teas)
+    event.preventDefault()
     // get request to create a single movie using axios
     // axios.get(`http://localhost:4741/movies/${this.state.movieIndex}`)
     // .then(response => this.setState({movieData: response.data.movie}))
     // .catch(console.error)
     axios.post('http://localhost:4741/tastings/', {
       tasting: {
-        user_id: this.props.user.id,
-        tea_id: this.state.tea,
+        user_id: Number(this.props.user.id),
+        tea_id: Number(this.state.tea_id),
         // user_id: this.,
         // tea_id: 1,
-        flavors: this.state.flavors
+        flavors: [Number(this.state.flavor_id)],
       }
     })
       .then(response => this.setState({ message: `made a new tasting with ID: ${response.data.tasting.id}` }))
@@ -42,44 +44,42 @@ class TastingCreate extends Component {
   }
 
   onTeaChange = event => {
-    this.setState({ tea: event.target.value })
-  }
+    console.log('event.selectedOptions[0].getAttribute is', event.target.selectedOptions[0].getAttribute('data-key'))
+    this.setState({ tea: event.target.value, tea_id: event.target.selectedOptions[0].getAttribute('data-key')  } )
+  } 
   //here event.target.value needs to come from dropdown
   onFlavorsChange = event => {
-    this.setState({ flavors: event.target.value })
+    console.log('event.selectedOptions[0].getAttribute is', event.target.selectedOptions[0].getAttribute('data-key'))
+    this.setState({ flavor: event.target.value, flavor_id: event.target.selectedOptions[0].getAttribute('data-key')  } )
   }
-  
-  
-  
-  render() {
-    console.log(this.props)
-    const TeasInDropdown = this.props.teas.map((data, index) => {
-      return (
-        <TeaDropdown key={ index }
-          name={ data.name } />
-      )
-    })
 
-    const FlavorsInDropdown = this.props.flavors.map((data, index) => {
-      return (
-        <FlavorDropdown key={ index }
-          name={ data.name } />
-      )
-    })
-
+  render () {
     return (
       <div className="dropdown">
-        {/* <label htmlFor="sel1"></label> */}
         <form onSubmit={ this.createTasting }>
           <select required
-            name="tea"
+            // key={ this.props.tea.id }
+            //value={ this.state.tea.id }
             onChange={ this.onTeaChange }>
-            {TeasInDropdown}
+            {this.props.teas.map((tea) => {
+              return (
+                <option key={tea.id} data-key={tea.id}>{ tea.name }</option>
+              )})}
           </select> 
-          <select required
-            name="flavors"
+        
+          {/* <TeaDropdown key={ index }
+          name={ data.name } />
+           */}
+        
+          
+          <select
+            // key={this.state.flavor[id]}
+            //value={ this.state.flavors }
             onChange={this.onFlavorsChange}>
-            {FlavorsInDropdown}
+            {this.props.flavors.map((flavor) => {
+              return (
+                <option key={flavor.id} data-key={flavor.id}>{ flavor.name }</option>
+              )})}
           </select>
           <input type="submit" value="Create Tasting" /> 
         </form>
