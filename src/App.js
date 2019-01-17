@@ -12,6 +12,7 @@ import TeaIndex from './views/TeaIndex.js'
 import TastingCreate from './views/TastingCreate.js'
 import TastingsIndex from './views/TastingsIndex.js'
 import TastingShow from './views/TastingShow.js'
+import TastingDelete from './views/TastingDelete.js'
 import axios from 'axios'
 
 class App extends Component {
@@ -84,6 +85,10 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/tasting-show' render={() => (
             <TastingShow user={user} teas={this.state.teas} flavors={this.state.flavors}
+            />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/tasting-delete' render={() => (
+            <TastingDelete user={user} teas={this.state.teas} flavors={this.state.flavors}
             />
           )} />
           
