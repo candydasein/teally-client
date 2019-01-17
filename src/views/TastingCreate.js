@@ -16,7 +16,7 @@ class TastingCreate extends Component {
       tea: '',
       tea_id: null,
       flavors: [],
-      flavor_ids: [null],
+      flavor_ids: [],
       message: null
     }
   }
@@ -47,8 +47,12 @@ class TastingCreate extends Component {
   } 
   //here event.target.value needs to come from dropdown
   onFlavorsChange = event => {
-    console.log('event.target.value is', event.target.value)
-    this.setState({ flavors: [event.target.value] } )
+    const { options } = event.target
+    const flavor_ids = Array.from(options)
+      .filter(option => option.selected)
+      .map(option => option.value)
+    if(flavor_ids.length > 5 ) return         
+    this.setState({ flavor_ids })
   }
 
   render () {
@@ -62,11 +66,11 @@ class TastingCreate extends Component {
                 <option key={tea.id} data-key={tea.id}>{ tea.name }</option>
               )})}
           </select> 
-          <select multiple value={[this.state.flavors]} 
+          <select multiple value={this.state.flavor_ids}
             onChange={this.onFlavorsChange}>
             {this.props.flavors.map((flavor) => {
               return (
-                <option key={flavor.id} data-key={flavor.id}>{ flavor.name }</option>
+                <option key={flavor.id} value={flavor.id}>{ flavor.name }</option>
               )})}
           </select>
           <input type="submit" value="Create Tasting" /> 
