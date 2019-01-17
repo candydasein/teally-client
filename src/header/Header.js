@@ -8,6 +8,7 @@ const authenticatedOptions = (
     <Link to='/create-tasting'>New Tasting</Link>
     <Link to='/tastings-index'>All My Tastings</Link>
     <Link to='/tasting-show'>One Tasting</Link>
+    <Link to='/tasting-delete/'>Delete a Tasting</Link>
     <Link to='/teas/'>View Teas</Link>
            
         
@@ -26,7 +27,6 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
   <React.Fragment>
     <Link to="/">Home</Link>
-    <Link to="/teas">Teas</Link>
   </React.Fragment>
 )
 
