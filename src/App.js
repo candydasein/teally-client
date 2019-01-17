@@ -14,6 +14,7 @@ import TastingsIndex from './views/TastingsIndex.js'
 import TastingShow from './views/TastingShow.js'
 import TastingDelete from './views/TastingDelete.js'
 import axios from 'axios'
+import apiUrl from './apiConfig.js'
 
 class App extends Component {
   constructor () {
@@ -42,11 +43,11 @@ class App extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:4741/teas')
+    axios.get(apiUrl + '/teas')
       .then(res => {
         this.setState({teas: res.data.teas }) 
       })
-    axios.get('http://localhost:4741/flavors')
+    axios.get(apiUrl + '/flavors')
       .then(res => {
         this.setState({flavors: res.data.flavors }) 
       })

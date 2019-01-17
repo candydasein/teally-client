@@ -3,6 +3,7 @@
 // component
 import React, { Component } from 'react'
 import axios from 'axios'
+import apiUrl from '../apiConfig.js'
 
 //the name of the component should match the name
 // of the file
@@ -20,7 +21,7 @@ class TastingDelete extends Component {
 
   deleteTasting = () => {
     // get request to get a single movie using axios
-    axios.delete(`http://localhost:4741/tastings/${this.state.id}`)
+    axios.delete(apiUrl + `/tastings/${this.state.id}`)
       .then(() => this.setState({message: `You deleted tasting ${this.state.id}`}))
       .catch(console.error)
 

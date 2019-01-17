@@ -1,4 +1,6 @@
-const apiUrl = 'https://teally.herokuapp.com/'
+
+
+import apiUrl from '../apiConfig.js'
 
 export const handleErrors = res => {
   if (res.ok) {

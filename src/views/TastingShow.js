@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Tasting from '../serverdata/components/Tasting.js'
+import apiUrl from '../apiConfig.js'
 
 //extend Component class
 //once its's made it stores data in a property called .state
@@ -19,7 +20,7 @@ class TastingShow extends Component {
   getTasting = () => {
     const { id }= this.state.id
 
-    axios.get(`http://localhost:4741/tastings/${this.state.id}`)
+    axios.get(apiUrl + `/tastings/${this.state.id}`)
       .then(res => {
         this.setState({tastingData: res.data.tasting }) 
       })

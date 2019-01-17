@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Tasting from '../serverdata/components/Tasting.js'
-
+import apiUrl from '../apiConfig.js'
 //extend Component class
 //once its's made it stores data in a property called .state
 //makes React listen to every component that has state to see if 
@@ -16,7 +16,7 @@ class TastingsIndex extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:4741/tastings')
+    axios.get(apiUrl + '/tastings')
       .then(res => {
         this.setState({tastings: res.data.tastings }) 
       })

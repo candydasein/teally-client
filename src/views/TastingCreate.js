@@ -3,6 +3,7 @@
 // component
 import React, { Component } from 'react'
 import axios from 'axios'
+import apiUrl from '../apiConfig.js'
 
 //the name of the component should match the name
 // of the file
@@ -23,7 +24,7 @@ class TastingCreate extends Component {
 
   createTasting = (props) => {
     event.preventDefault()
-    axios.post('http://localhost:4741/tastings/', {
+    axios.post(apiUrl + '/tastings/', {
       tasting: {
         user_id: Number(this.props.user.id),
         tea_id: Number(this.state.tea_id),

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Tea from '../serverdata/components/Tea.js'
-
+import apiUrl from '../apiConfig.js'
 //extend Component class
 //once its's made it stores data in a property called .state
 //makes React listen to every component that has state to see if 
@@ -16,7 +16,7 @@ class TeaIndex extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:4741/teas')
+    axios.get(apiUrl + '/teas')
       .then(res => {
         this.setState({teas: res.data.teas }) 
       })
