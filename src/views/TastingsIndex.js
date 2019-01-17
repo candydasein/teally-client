@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Tasting from '../serverdata/components/Tasting.js'
 import apiUrl from '../apiConfig.js'
+
 //extend Component class
 //once its's made it stores data in a property called .state
 //makes React listen to every component that has state to see if 
@@ -31,7 +32,8 @@ class TastingsIndex extends Component {
         console.log(data)
         return (
           <Tasting key={ index }
-            data={ data } />
+            data={ data } 
+            user={this.props.user}/>
         )
       })
 

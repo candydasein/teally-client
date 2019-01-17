@@ -3,6 +3,13 @@ $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
 
+a {
+  text-decoration: none;
+  color: white;
+  background-color: rgba(41, 10, 10, 0.256);
+  font-size: 20px;
+}
+
 .flash-success,
 .flash-warning,
 .flash-error {

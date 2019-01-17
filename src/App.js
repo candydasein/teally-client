@@ -92,7 +92,6 @@ class App extends Component {
             <TastingDelete user={user} teas={this.state.teas} flavors={this.state.flavors}
             />
           )} />
-          
         </div>
       </div>
     )
