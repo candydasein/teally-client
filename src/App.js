@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import TeaIndex from './views/TeaIndex.js'
 import TastingCreate from './views/TastingCreate.js'
+import TastingsIndex from './views/TastingsIndex.js'
 import axios from 'axios'
 
 class App extends Component {
@@ -72,19 +73,16 @@ class App extends Component {
           )} />
         </main>
         <div>
-          <Route exact path='/create-tasting' render={() => (
+          <Route user={user} exact path='/create-tasting' render={() => (
             <TastingCreate user={user} teas={this.state.teas} flavors={this.state.flavors}
             //here pass in all teas as a prop into TastingCreate
             />
           )} />
-          <ul>
-            <li>
-              <Link to='/create-tasting'>Create a Tasting</Link>
-            </li>
-            <li>
-              <Link to='/teas/'>All Teas</Link>
-            </li>
-          </ul>
+          <AuthenticatedRoute user={user} exact path='/tastings-index' render={() => (
+            <TastingsIndex user={user} teas={this.state.teas} flavors={this.state.flavors}
+            //here pass in all teas as a prop into TastingCreate
+            />
+          )} />
         </div>
       </div>
     )

@@ -5,6 +5,15 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
+    
+    <Link to='/create-tasting'>Create a Tasting</Link>
+  
+
+    <Link to='/tastings-index'>See Your Tastings</Link>
+  
+    <Link to='/teas/'>All Teas</Link>
+           
+        
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
   </React.Fragment>
