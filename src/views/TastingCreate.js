@@ -22,19 +22,12 @@ class TastingCreate extends Component {
   }
 
   createTasting = (props) => {
-    console.log(this.props.teas)
     event.preventDefault()
-    // get request to create a single movie using axios
-    // axios.get(`http://localhost:4741/movies/${this.state.movieIndex}`)
-    // .then(response => this.setState({movieData: response.data.movie}))
-    // .catch(console.error)
     axios.post('http://localhost:4741/tastings/', {
       tasting: {
         user_id: Number(this.props.user.id),
         tea_id: Number(this.state.tea_id),
-        // user_id: this.,
-        // tea_id: 1,
-        flavors: [Number(this.state.flavor_ids)],
+        flavors: this.state.flavor_ids,
       }
     })
       .then(response => this.setState({ message: `made a new tasting with ID: ${response.data.tasting.id}` }))
@@ -66,7 +59,7 @@ class TastingCreate extends Component {
                 <option key={tea.id} data-key={tea.id}>{ tea.name }</option>
               )})}
           </select> 
-          <select multiple value={this.state.flavor_ids}
+          <select multiple value={this.state.flavor_ids} 
             onChange={this.onFlavorsChange}>
             {this.props.flavors.map((flavor) => {
               return (
@@ -75,6 +68,7 @@ class TastingCreate extends Component {
           </select>
           <input type="submit" value="Create Tasting" /> 
         </form>
+        {this.state.message && <span>{ this.state.message} </span> }
       </div>
     )
   }
