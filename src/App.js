@@ -13,6 +13,7 @@ import TastingCreate from './views/TastingCreate.js'
 import TastingsIndex from './views/TastingsIndex.js'
 import TastingShow from './views/TastingShow.js'
 import TastingDelete from './views/TastingDelete.js'
+import TastingUpdate from './views/TastingUpdate.js'
 import axios from 'axios'
 import apiUrl from './apiConfig.js'
 
@@ -28,6 +29,20 @@ class App extends Component {
       flavors: []
     }
   }
+
+  authenticatedOptions = (
+    <React.Fragment>
+      <Link to='/create-tasting'>New Tasting</Link>
+      <br></br>
+      <Link to='/tastings-index'>All My Tastings</Link>
+      <br></br>
+      <Link to='/tasting-show'>One Tasting</Link>
+      <br></br>
+      <Link to='/tasting-delete/'>Delete a Tasting</Link>
+      <br></br>
+      <Link to='/update-tasting/'>Update a Tasting</Link>
+    </React.Fragment>
+  )
 
   setUser = user => this.setState({ user })
 
@@ -67,16 +82,17 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn flash={this.flash} setUser={this.setUser} />
           )} />
-          <Route exact path="/teas" component={TeaIndex} />
+          <AuthenticatedRoute user={user} exact path="/teas" component={TeaIndex} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
+          {/* { user ? this.authenticatedOptions : null } */}
         </main>
-        <div>
-          <Route user={user} exact path='/create-tasting' render={() => (
+        <div className="main-data-div">
+          <AuthenticatedRoute user={user} exact path='/create-tasting' render={() => (
             <TastingCreate user={user} teas={this.state.teas} flavors={this.state.flavors}
             />
           )} />
@@ -92,7 +108,10 @@ class App extends Component {
             <TastingDelete user={user} teas={this.state.teas} flavors={this.state.flavors}
             />
           )} />
-          
+          <AuthenticatedRoute user={user} exact path='/update-tasting/' render={() => (
+            <TastingUpdate user={user} flavors={this.state.flavors}
+            />
+          )} />
         </div>
       </div>
     )

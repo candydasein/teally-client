@@ -1,12 +1,18 @@
-$success: #c7f282;
-$warning: #f1e681;
-$error: #f08181;
-$charcoal: #ccc;
+$success: #c7f2829f;
+$warning: #f1e68198;
+$error: #f081817e;
+$charcoal: rgba(204, 204, 204, 0.557);
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
 
 .flash-success,
 .flash-warning,
 .flash-error {
-  border: 1px solid $charcoal;
+  //border: 1px solid $charcoal;
   display: block;
   left: 25%;
   padding: 30px;
@@ -15,6 +21,7 @@ $charcoal: #ccc;
   top: 15%;
   width: 50%;
   z-index: 1;
+  margin-top: 50px;
 }
 
 .flash-success {
@@ -33,8 +40,9 @@ $charcoal: #ccc;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 15% auto 0;
-  max-width: 600px;
+  margin: 5% auto 40px;
+  max-width: 400px;
+  padding-bottom: 20px;
 
   h3,
   input {
@@ -43,10 +51,72 @@ $charcoal: #ccc;
 
   button {
     align-self: flex-end;
-    max-width: 200px;
+    max-width: 150px;
+    border-radius: 5px;
   }
 }
 
 body {
   color: white;
+}
+
+.container {
+  display: grid;
+  height: 105px;
+  width: 88%;
+  
+  //grid-template-columns: 2fr 2fr 2fr;
+  //grid-template-rows: auto;
+}
+
+.col {
+  border: 1px solid rgb(255, 217, 0);
+  width: 100px;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.53);
+  position: relative;
+}
+
+select {
+  margin: 20px;
+  display: flex;
+}
+
+form {
+  display: inline-flex;
+  flex-flow: column;
+  text-align: center;
+  //margin: 0 auto;
+}
+
+.flavor-select {
+  height: 150px;
+  width: 400px;
+  margin-left: 15%;
+}
+
+.tea-select {
+  width: 400px;
+  margin-left: 15%;
+}
+
+.create-tasting-button {
+  width: 350px;
+  margin-left: 18%;
+  margin-bottom: 10%;
+}
+
+.main-data-div {
+  //height: auto; 
+  margin: 0 auto; 
+}
+
+.flavorwheel {
+  height: 66%;
+  width: 66%;
+  margin-left: 10%;
+}
+
+.tasting-instructions {
+  background-color: rgba(38, 33, 33, 0.365);
 }
