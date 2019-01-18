@@ -9,6 +9,7 @@ const authenticatedOptions = (
     <Link to='/tastings-index'>All My Tastings</Link>
     <Link to='/tasting-show'>One Tasting</Link>
     <Link to='/tasting-delete/'>Delete a Tasting</Link>
+    <Link to='/update-tasting/'>Update a Tasting</Link>
     <Link to='/teas/'>View Teas</Link>
            
         
@@ -32,9 +33,9 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Welcome to Teally</h1>
+    <h1>Teally</h1>
     <nav>
-      { user && <span>Welcome, {user.email}</span>}
+      {/* { user && <span>Welcome, {user.email}</span>} */}
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
     </nav>

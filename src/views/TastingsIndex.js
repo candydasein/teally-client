@@ -29,7 +29,6 @@ class TastingsIndex extends Component {
     const UserTastings = this.state.tastings
       .filter(tasting => tasting.user.id === this.props.user.id) 
       .map((data, index) => {
-        console.log(data)
         return (
           <Tasting key={ index }
             data={ data } 

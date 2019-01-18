@@ -18,7 +18,8 @@ class TastingUpdate extends Component {
       tea_id: this.props.tea_id,
       flavors: [],
       flavor_ids: [],
-      message: null
+      message: null,
+      tasting_id: ''
     }
   }
 
@@ -26,10 +27,10 @@ class TastingUpdate extends Component {
     event.preventDefault()
     // const { tea_id }= this.state
 
-    axios.patch(apiUrl + `/tastings/${ parseInt(this.props.tea_id) }`, {
+    axios.patch(apiUrl + `/tastings/${ parseInt(this.state.tasting_id) }`, {
       tasting: {
-        user_id: Number(this.props.user.id),
-        tea_id: Number(this.state.tea_id),
+        // user_id: Number(this.props.user.id),
+        // tea_id: Number(this.state.tea_id),
         flavors: this.state.flavor_ids,
       }
     })
@@ -37,10 +38,9 @@ class TastingUpdate extends Component {
       .catch(console.error)
   }
 
-  // onTeaChange = event => {
-  //   console.log('event.selectedOptions[0].getAttribute is', event.target.selectedOptions[0].getAttribute('data-key'))
-  //   this.setState({ tea: event.target.value, tea_id: event.target.selectedOptions[0].getAttribute('data-key')  } )
-  // } 
+  onIdChange = event => {
+    this.setState({ tasting_id: event.target.value } )
+  } 
   //here event.target.value needs to come from dropdown
   onFlavorsChange = event => {
     const { options } = event.target
@@ -55,9 +55,13 @@ class TastingUpdate extends Component {
     return (
       <div>
         <form onSubmit={ this.updateTasting }>
-          <select>
+          <input type="number"
+            placeholder="ID"
+            value={ this.state.tasting_id }
+            onChange={ this.onIdChange } />
+          {/* <select>
             {this.props.tea}
-          </select> 
+          </select>  */}
           <select multiple value={this.state.flavor_ids} 
             onChange={this.onFlavorsChange}>
             {this.props.flavors.map((flavor) => {
