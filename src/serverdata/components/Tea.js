@@ -1,14 +1,25 @@
 import React from 'react'
 
 const Tea = props => {
-  console.log(props)
-  return (
-    <div>
-      <dl className="row">
-        <dt className="col-sm-3">Name: { props.data.name }</dt>
-        <dd className="col-sm-9">Type: { props.data.family }</dd>
-        <dd className="col-sm-9">Country: { props.data.country }</dd>
-      </dl>
+  return(
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          { props.data.name }
+        </div>
+        <div className="col">
+          { props.data.family }
+        </div>
+        <div className="col">
+          { props.data.country}
+        </div>
+        <div className="col">
+          Favorite flavors: 
+        </div>
+        {/* <div className="col">
+            <img src={props.data.tea.picture}></img>
+          </div> */}
+      </div>
     </div>
   )
 }

@@ -1,18 +1,30 @@
 import React from 'react'
+import { Route, Link } from 'react-router-dom'
+import TastingUpdate from '../../views/TastingUpdate.js'
 
 const Tasting = props => {
-  console.log(props.data.created_at)
   const tastingFlavors = props.data.flavors.map((flavor) => flavor.name).join(', ')
   const dateCreated = new Date(props.data.created_at)
   
   return (
-    <div>
-      <dl className="row">
-        <dt className="col-sm-3">Tea: { props.data.tea.name }</dt>
-        <dd className="col-sm-3">Tasting ID: { props.data.id }. </dd>
-        <dd className="col-sm-3">Tasted on { dateCreated.toDateString() }. </dd>
-        <dd className="col-sm-9">Flavors: {tastingFlavors}</dd> 
-      </dl>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          { props.data.tea.name }
+        </div>
+        <div className="col">
+          { props.data.id }
+        </div>
+        <div className="col">
+          { dateCreated.toDateString() }
+        </div>
+        <div className="col">
+          {tastingFlavors}
+        </div>
+        {/* <div className="col">
+          <img src={props.data.tea.picture}></img>
+        </div> */}
+      </div>
     </div>
   )
 }

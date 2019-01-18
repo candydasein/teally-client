@@ -19,7 +19,6 @@ class TastingShow extends Component {
 
   getTasting = () => {
     const { id }= this.state.id
-
     axios.get(apiUrl + `/tastings/${id}`)
       .then(res => {
         this.setState({tastingData: res.data.tasting }) 
