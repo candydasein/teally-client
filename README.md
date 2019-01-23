@@ -12,12 +12,12 @@ This can be valuable data not only for matching a customer to a specific tea tha
 ## What is Teally?
 Enter Teally. In Teally, authenticated users are able to use the journal aspect of the app to keep track of the flavors they like in each tea they are drinking. When they create a tasting, they choose the tea they are drinking from a dropdown menu, and then can choose up to five flavors they like in the tea from a limited series of flavors (88 in total, organized by type -- Floral, Fruity, Mineral, etc.) Since there is a large but finite series of flavors for them to choose from and they can only isolate five flavors in each tasting, the app is able to calculate what individual flavors they prefer -- in other words, to create a profile of their palate. The more tastings they do, the more accurate this profile becomes. In addition, since each tasting consists of a single tea and a small series of flavors, the app is able also able to calculate a given tea's flavor profile. From there, it is simple to match user palates to tea flavor profiles -- in other words, to recommend teas to tea enthusiasts that they will truly love, not just because they love green teas (which have a vast variety of flavor profiles), but because they love things that combine, say, waxy wood, sea salt, gardenia, dill, and coconut. While this is hardly a flavor profile a trained expert would ever isolate in a tea, what is more important is that an individual tea drinker says it's there and wants more of it.   
 
-##Technologies
+## Technologies
 The front end of this app was built with React and JavaScript and styled with CSS3, Bootstrap, and Sass. Server requests are made using Axios and Fetch.
 
 The back end is built using Ruby on Rails. 
 
-##Planning and Problem Solving
+## Planning and Problem Solving
 For planning, even though this was a solo project, I treated it like a group project where I played several different roles and used agile project management. I made extensive use of Trello in order to break the project down into small (sometimes tiny) tasks. I also did "stand-ups" each morning that were basically me talking to a whiteboard. This translated directly into intensely rigorous version control. I worked on feature branches exclusively. Once a feature was finished and tested, I pushed it up to GitHub where I then put on my product manager hat and merged the feture with the development branch. I then put my developer hat back on and pulled the development branch down onto my own machine before starting another branch for the next feature. This allowed for a strong sense of organization and an even stronger sense of confidence in the project: being meticulous like this allowed me to make all the transitions in the project -- from feature to feature, but _especially_ from front end to back end -- with a sense of security that I was improving the project continuously and that I would have no surprises later.
 
 Of course, some surprises did come up, and there were some problems to address along the way. All of the small challenges I faced were due to the two large challenges/goals I set for myself at the beginning of the project: to learn React (which I had never worked in before) and to build a server with many-to-many relationships (which I had also never done before). These were both ambitious goals, and I tackled them largely by remaining committed to allowing my Trello board to tell me what to do and when. I am accustomed to being spontaneous and flexible, but in this case, I set a goal of being structured and it truly paid off. This third goal, funnily enough, helped me achieve the other two.
@@ -39,9 +39,9 @@ axios.post(apiUrl + '/tastings/', {
       }
 ```
 
-Stack Overflow, my teachers, my fellow students, and my boss Trello were my best resources/ 
+Stack Overflow, my teachers, my fellow students, and my boss Trello were my best resources. 
 
-##Unsolved Problems
+## Unsolved Problems
 At this stage of development, the app is missing three essential features:
 
 1. Currently, users can only update or delete a tasting they have already done by going to clicking on "Update a Tasting" or "Delete a Tasting" and inputting the ID number of a specific tasting. This is not very user-friendly, and I hope to add update and delete options next to each individual tasting in the "My Tastings" screen.
@@ -52,10 +52,11 @@ At this stage of development, the app is missing three essential features:
 
 I also plan to enhance the overall stylistics of the site. Currently, it is disorganized, incomplete, and not mobile-responsive.
 
-##Wireframe
-![alt text](https://github.com/candydasein/teally-client/tree/master/src/images/Teally-wireframe.png)
+## Wireframe
 
-##User Stories
+![Link](https://i.imgur.com/xdN3JSf.jpg)
+
+## User Stories
 Note: stretch goals in parentheses.
 
 As a user, I should be able to sign up, sign in, sign out, change my password, (and delete my account)
@@ -68,11 +69,11 @@ As a user, I should be able to retrieve, update, and delete all my past tea tast
 
 As a user I should be able to receive recommendations of teas that I would like based on the flavors I liked in previous tastings and other users’ likes.  
 
-##Screenshot
-![alt text](https://github.com/candydasein/teally-client/tree/master/src/images/Teally-screenshot.png)
+## Screenshot
 
+![Link](https://i.imgur.com/nfcHopm.png)
 
-##Links
+## Links
 [Deployed Client](https://candydasein.github.io/teally-client/#/)
 
 [Deployed Server](https://teally.herokuapp.com/)
