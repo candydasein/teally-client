@@ -14,13 +14,14 @@ class TastingDelete extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: 1,
+      id: '',
       message: null
     }
   }
 
   deleteTasting = () => {
     // get request to get a single movie using axios
+    event.preventDefault()
     axios.delete(apiUrl + `/tastings/${this.state.id}`)
       .then(() => this.setState({message: `You deleted tasting ${this.state.id}`}))
       .catch(console.error)

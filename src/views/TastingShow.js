@@ -13,16 +13,20 @@ class TastingShow extends Component {
     super(props)
     this.state = {
       id: '',
-      tastingData: null
+      tastingData: null,
+      message: null,
+      // tasting_id: ''
     }
   }
 
   getTasting = () => {
+    event.preventDefault()
     const { id }= this.state
     axios.get(apiUrl + `/tastings/${id}`)
       .then(res => {
         this.setState({tastingData: res.data.tasting }) 
       })
+      .catch(this.setState({ message: 'There is no tasting with that ID#'  }))
   }
 
   onIdChange = event => {
