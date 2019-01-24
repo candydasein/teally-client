@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Tea from '../serverdata/components/Tea.js'
+import Recommendation from '../serverdata/components/Recommendation'
 import apiUrl from '../apiConfig.js'
 //extend Component class
 //once its's made it stores data in a property called .state
 //makes React listen to every component that has state to see if 
 //it needs to update the actual DOM 
 
-class TeaIndex extends Component {
+class Recommendations extends Component {
   constructor(props) {
     super(props)
     this.state = {
       teas: [],
-      tastings: []
+      users: []
     }
   }
 
@@ -21,19 +21,20 @@ class TeaIndex extends Component {
       .then(res => {
         this.setState({teas: res.data.teas }) 
       })
-    axios.get(apiUrl + '/tastings')
+    axios.get(apiUrl + '/users')
       .then(res => {
-        this.setState({tastings: res.data.tastings }) 
+        this.setState({users: res.data.users }) 
       })
   }
 
   //you must have a render function that returns something 
 
   render () {
-    const Teas = this.state.teas.map((tea, index) => {
+    
+    const Recommendations = this.state.users.map((user, index) => {
       return (
-        <Tea key={ index }
-          tea={ tea }
+        <Recommendation key={ index }
+          user= { user }
           // tastings= {this.state.tastings}
         />
       )
@@ -41,10 +42,10 @@ class TeaIndex extends Component {
 
     return (
       <div>
-        {Teas}
+        {Recommendations}
       </div>
     )
   }
 }
 
-export default TeaIndex
+export default Recommendations

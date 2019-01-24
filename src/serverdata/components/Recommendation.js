@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Tea = props => {
-  const teaFlavors = props.tea.flavors.map(flavor => flavor.name)
+const Recommendation = props => {
+
+  const userFlavors = props.user.flavors.map(flavor => flavor.name)
 
   const flavorFrequency = {}
 
-  for (let i = 0; i < teaFlavors.length; i++) {
-    const num = teaFlavors[i]
+  for (let i = 0; i < userFlavors.length; i++) {
+    const num = userFlavors[i]
     flavorFrequency[num] = flavorFrequency[num] ? flavorFrequency[num] + 1 : 1
   }
 
@@ -20,17 +21,19 @@ const Tea = props => {
   const top5 = sortedFavoriteFlavors.flat()
     .filter(item => typeof item === 'string')
     .join(', ') 
+
+  console.log('user\'s top 5 are', top5)
   
   return(
     <div className="container">
       <div className="row">
         <div className="col">
-          { props.tea.name }
+          { props.user.email }
         </div>
         <div className="col">
-          { props.tea.family }
+          { top5 }
         </div>
-        <div className="col">
+        {/* <div className="col">
           { props.tea.country}
         </div>
         <div className="col">
@@ -38,10 +41,10 @@ const Tea = props => {
         </div>
         <div className="col">
           <img className="tea-picture" src={props.tea.picture}></img>
-        </div>
+        </div> */}
       </div>
     </div>
   )
 }
 
-export default Tea
+export default Recommendation
