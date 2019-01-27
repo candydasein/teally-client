@@ -7,7 +7,7 @@ import apiUrl from '../apiConfig.js'
 //makes React listen to every component that has state to see if 
 //it needs to update the actual DOM 
 
-class Recommendations extends Component {
+class GetRecommendations extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -48,4 +48,4 @@ class Recommendations extends Component {
   }
 }
 
-export default Recommendations
+export default GetRecommendations

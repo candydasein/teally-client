@@ -14,7 +14,7 @@ import TastingsIndex from './views/TastingsIndex.js'
 import TastingShow from './views/TastingShow.js'
 import TastingDelete from './views/TastingDelete.js'
 import TastingUpdate from './views/TastingUpdate.js'
-import Recommendations from './views/Recommendations.js'
+import GetRecommendations from './views/GetRecommendations.js'
 import axios from 'axios'
 import apiUrl from './apiConfig.js'
 
@@ -92,7 +92,7 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path="/teas" component={TeaIndex} />
           <AuthenticatedRoute user={user} exact path="/recommendations" render={() => (
-            <Recommendations user={user} teas={this.state.teas} flavors={this.state.flavors} />
+            <GetRecommendations user={user} teas={this.state.teas} flavors={this.state.flavors} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />

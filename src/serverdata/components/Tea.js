@@ -17,7 +17,7 @@ const Tea = props => {
 
   const sortedFavoriteFlavors = sortableFlavors.sort((a, b) => b[1] - a[1]).slice(0, 5)
   
-  const top5 = sortedFavoriteFlavors.flat()
+  const TeaTop5 = sortedFavoriteFlavors.flat()
     .filter(item => typeof item === 'string')
     .join(', ') 
   
@@ -34,7 +34,7 @@ const Tea = props => {
           { props.tea.country}
         </div>
         <div className="col">
-          <span style={{fontWeight: '700'}}>Top 5 favorite flavors:</span> { top5 }
+          <span style={{fontWeight: '700'}}>Top 5 favorite flavors:</span> { TeaTop5 }
         </div>
         <div className="col">
           <img className="tea-picture" src={props.tea.picture}></img>
@@ -45,3 +45,4 @@ const Tea = props => {
 }
 
 export default Tea
+module.export = this.TeaTop5  
