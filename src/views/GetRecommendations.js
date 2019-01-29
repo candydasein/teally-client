@@ -12,7 +12,7 @@ class GetRecommendations extends Component {
     super(props)
     this.state = {
       teas: [],
-      users: []
+      user: this.props.user
     }
   }
 
@@ -21,30 +21,33 @@ class GetRecommendations extends Component {
       .then(res => {
         this.setState({teas: res.data.teas }) 
       })
-    axios.get(apiUrl + '/users')
-      .then(res => {
-        this.setState({users: res.data.users }) 
-      })
+    // axios.get(apiUrl + '/users')
+    //   .then(res => {
+    //     this.setState({users: res.data.users }) 
+    //   })
   }
 
   //you must have a render function that returns something 
 
   render () {
-    
-    const Recommendations = this.state.users.map((user, index) => {
-      return (
-        <Recommendation key={ index }
-          user= { user }
-          // tastings= {this.state.tastings}
-        />
-      )
-    })
-
+    console.log('this.state.teas in GetRec is', this.state.teas)
+   
     return (
       <div>
-        {Recommendations}
+        <Recommendation 
+          user= { this.state.user }
+          teas= { this.state.teas } 
+        />
       </div>
     )
+  //}
+
+
+  // return (
+  //   <div>
+  //     {Recommendations}
+  //   </div>
+  // )
   }
 }
 
