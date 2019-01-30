@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap';
+
 $success: #c7f2829f;
 $warning: #f1e68198;
 $error: #f081817e;
@@ -120,3 +122,10 @@ form {
 .tasting-instructions {
   background-color: rgba(38, 33, 33, 0.365);
 }
+
+.tea-picture {
+  width: 100px;
+  height: 100px;
+  border: none;
+}
+

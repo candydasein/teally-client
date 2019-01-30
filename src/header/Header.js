@@ -6,6 +6,7 @@ import './Header.scss'
 const authenticatedOptions = (
   <React.Fragment>
     <Link to='/create-tasting'>New Tasting</Link>
+    <Link to='/get-recommendations'>Get a Recommendation</Link>
     <Link to='/tastings-index'>All My Tastings</Link>
     <Link to='/tasting-show'>One Tasting</Link>
     <Link to='/tasting-delete/'>Delete a Tasting</Link>
@@ -33,7 +34,9 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Teally</h1>
+    <h1>
+      Teally
+    </h1>
     <nav>
       {/* { user && <span>Welcome, {user.email}</span>} */}
       { user ? authenticatedOptions : unauthenticatedOptions }

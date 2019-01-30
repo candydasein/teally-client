@@ -11,7 +11,8 @@ class TeaIndex extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      teas: []
+      teas: [],
+      tastings: []
     }
   }
 
@@ -20,15 +21,21 @@ class TeaIndex extends Component {
       .then(res => {
         this.setState({teas: res.data.teas }) 
       })
+    axios.get(apiUrl + '/tastings')
+      .then(res => {
+        this.setState({tastings: res.data.tastings }) 
+      })
   }
 
   //you must have a render function that returns something 
 
   render () {
-    const Teas = this.state.teas.map((data, index) => {
+    const Teas = this.state.teas.map((tea, index) => {
       return (
         <Tea key={ index }
-          data={ data } />
+          tea={ tea }
+          // tastings= {this.state.tastings}
+        />
       )
     })
 
