@@ -11,43 +11,34 @@ class GetRecommendations extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      teas: [],
+      // teas: this.props.tea,
       user: this.props.user
     }
   }
 
-  componentDidMount () {
-    axios.get(apiUrl + '/teas')
-      .then(res => {
-        this.setState({teas: res.data.teas }) 
-      })
-    // axios.get(apiUrl + '/users')
-    //   .then(res => {
-    //     this.setState({users: res.data.users }) 
-    //   })
-  }
+  // componentDidMount () {
+  //   axios.get(apiUrl + '/teas')
+  //     .then(res => {
+  //       this.setState({teas: res.data.teas }) 
+  //     })
+  // axios.get(apiUrl + '/users')
+  //   .then(res => {
+  //     this.setState({users: res.data.users }) 
+  //   })
+  // }
 
   //you must have a render function that returns something 
 
   render () {
-    console.log('this.state.teas in GetRec is', this.state.teas)
-   
     return (
       <div>
         <Recommendation 
           user= { this.state.user }
-          teas= { this.state.teas } 
+          // teas= { this.state.teas } 
         />
       </div>
     )
   //}
-
-
-  // return (
-  //   <div>
-  //     {Recommendations}
-  //   </div>
-  // )
   }
 }
 
