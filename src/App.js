@@ -14,6 +14,7 @@ import TastingsIndex from './views/TastingsIndex.js'
 import TastingShow from './views/TastingShow.js'
 import TastingDelete from './views/TastingDelete.js'
 import TastingUpdate from './views/TastingUpdate.js'
+import Recommendation from './serverdata/components/Recommendation.js'
 import axios from 'axios'
 import apiUrl from './apiConfig.js'
 
@@ -26,23 +27,26 @@ class App extends Component {
       flashMessage: '',
       flashType: null,
       teas: [],
-      flavors: []
+      flavors: [],
+      tastings: []
     }
   }
 
-  authenticatedOptions = (
-    <React.Fragment>
-      <Link to='/create-tasting'>New Tasting</Link>
-      <br></br>
-      <Link to='/tastings-index'>All My Tastings</Link>
-      <br></br>
-      <Link to='/tasting-show'>One Tasting</Link>
-      <br></br>
-      <Link to='/tasting-delete/'>Delete a Tasting</Link>
-      <br></br>
-      <Link to='/update-tasting/'>Update a Tasting</Link>
-    </React.Fragment>
-  )
+  // authenticatedOptions = (
+  //   <React.Fragment>
+  //     <Link to='/create-tasting'>New Tasting</Link>
+  //     <br></br>
+  //     <Link to='/recommendations'>Get a Recommendation</Link>
+  //     <br></br>
+  //     <Link to='/tastings-index'>All My Tastings</Link>
+  //     <br></br>
+  //     <Link to='/tasting-show'>One Tasting</Link>
+  //     <br></br>
+  //     <Link to='/tasting-delete/'>Delete a Tasting</Link>
+  //     <br></br>
+  //     <Link to='/update-tasting/'>Update a Tasting</Link>
+  //   </React.Fragment>
+  // )
 
   setUser = user => this.setState({ user })
 
@@ -66,6 +70,10 @@ class App extends Component {
       .then(res => {
         this.setState({flavors: res.data.flavors }) 
       })
+    // axios.get(apiUrl + '/tastings')
+    // .then(res => {
+    //   this.setState({tastings: res.data.tastings }) 
+    // })
   }
 
   render () {
@@ -83,6 +91,9 @@ class App extends Component {
             <SignIn flash={this.flash} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} exact path="/teas" component={TeaIndex} />
+          <AuthenticatedRoute user={user} exact path="/get-recommendations" render={() => (
+            <Recommendation user={user} teas={this.state.teas} flavors={this.state.flavors} />
+          )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
           )} />
