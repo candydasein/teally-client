@@ -32,22 +32,6 @@ class App extends Component {
     }
   }
 
-  // authenticatedOptions = (
-  //   <React.Fragment>
-  //     <Link to='/create-tasting'>New Tasting</Link>
-  //     <br></br>
-  //     <Link to='/recommendations'>Get a Recommendation</Link>
-  //     <br></br>
-  //     <Link to='/tastings-index'>All My Tastings</Link>
-  //     <br></br>
-  //     <Link to='/tasting-show'>One Tasting</Link>
-  //     <br></br>
-  //     <Link to='/tasting-delete/'>Delete a Tasting</Link>
-  //     <br></br>
-  //     <Link to='/update-tasting/'>Update a Tasting</Link>
-  //   </React.Fragment>
-  // )
-
   setUser = user => this.setState({ user })
 
   clearUser = () => this.setState({ user: null })
@@ -70,20 +54,16 @@ class App extends Component {
       .then(res => {
         this.setState({flavors: res.data.flavors }) 
       })
-    // axios.get(apiUrl + '/tastings')
-    // .then(res => {
-    //   this.setState({tastings: res.data.tastings }) 
-    // })
   }
 
   render () {
     const { flashMessage, flashType, user } = this.state
     return (
-      <div>
+      <div className="outermost-container">
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         
-        <main className="container">
+        <main className>
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
           )} />
@@ -100,9 +80,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          {/* { user ? this.authenticatedOptions : null } */}
+          { user ? this.authenticatedOptions : null } 
         </main>
-        <div className="main-data-div">
+        <div>
           <AuthenticatedRoute user={user} exact path='/create-tasting' render={() => (
             <TastingCreate user={user} teas={this.state.teas} flavors={this.state.flavors}
             />

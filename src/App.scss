@@ -5,10 +5,26 @@ $warning: #f1e68198;
 $error: #f081817e;
 $charcoal: rgba(204, 204, 204, 0.557);
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
   color: white;
   font-size: 16px;
+}
+
+a:visited {
+  color: rgb(108, 106, 106);
+}
+
+a:hover {
+  color: rgba(238, 3, 3, 0.865);
+  text-decoration: none;
+  
 }
 
 .flash-success,
@@ -43,7 +59,7 @@ a {
   flex-direction: column;
   justify-content: center;
   margin: 5% auto 40px;
-  max-width: 400px;
+  max-width: 200px;
   padding-bottom: 20px;
 
   h3,
@@ -60,23 +76,174 @@ a {
 
 body {
   color: white;
-}
-
-.container {
-  display: grid;
-  height: 105px;
-  width: 88%;
-  
-  //grid-template-columns: 2fr 2fr 2fr;
-  //grid-template-rows: auto;
-}
-
-.col {
-  border: 1px solid #383d41;
-  width: 100px;
-  height: 90%;
-  background-color: rgba(0, 0, 0, 0.53);
+  line-height: 1.7;
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-image: url('./images/background2.jpg');
+  background-size: cover;
+  background-color: black;
+  background-position: top;
+  margin: 0;
+  padding: 0;
   position: relative;
+}
+
+// .container {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+main {
+  height: 95vh;
+  background-size: cover;
+  background-position: top;
+  /*clip-path: x y, x y, x y, x y, from top left and clockwise*/
+  position: relative;
+  padding-top: 50px;
+  // background-color: rgba(250, 235, 215, 0.57);
+}
+
+// .col {
+//   border: 1px solid #383d41;
+//   width: 100px;
+//   height: 90%;
+//   background-color: rgba(0, 0, 0, 0.53);
+//   position: relative;
+// }
+
+
+
+
+
+
+
+// .recommendation-user-favorites {
+//   //position: absolute;
+//   // top: 50%;
+//   // left: 50%;
+//   display: block;
+//   font-size: 20px;
+//   font-weight: 400;
+//  //width: 70%;
+//   //transform: translate(-50%, 90%);
+//   // letter-spacing: 35px;
+// }
+
+.recommendation-message-1 {
+  //top: 0%;
+  left: 40%;
+  position: relative;
+  transform: translate(-50%, 5%);
+  margin: 10px;
+}
+
+.recommendation-message-2 {
+  top: 0%;
+  left: 33%;
+  position: relative;
+  transform: translate(-50%, -40%);
+  margin: 15px;
+}
+
+.user-flavor-list {
+ //margin-top: 10px;
+  position: relative;
+  top: -10%;
+  left: 50%;
+  list-style-type: none;
+  transform: translate(-20%, 10%);
+  //padding: 10px;
+}
+
+div {
+
+&.recommendation-wrapper {
+
+  display: flex;
+  flex-flow: row;
+}
+
+.recommendation-user-container {
+   position: relative;
+   top: 25%;
+   left: 5%; /*aka 50% from the left edge of the parent element, which is header*/
+  // transform: translate(-50%, -50%); /*now these are no longer 50% of parent element
+  // but of this element; -50% of the element's width from the right; without this
+  // top left corner will be centered, not the center itself; this basically moves
+  // the element 50% away from its own left and 50% away from its own top */
+  // background-color: rgba(255, 255, 255, 0.399);
+  // color: black; 
+  // width: 70vw;
+  // // height: 70%;
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin: 10px 0 0 0;
+  width: 50vw;
+  //background-color: rgba(245, 245, 245, 0.783);
+}
+
+&.recommended-tea-card {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  margin: 10px 0 0 0;
+  width: 50vw;
+  //background-color: rgba(245, 245, 245, 0.783);
+}
+
+&.recommended-tea-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  width: 75%;
+}
+
+}
+
+img {
+&.recommended-tea-image {
+  height: 100%;
+  min-width: 33%;
+  object-fit: cover;
+  padding: 10px;
+  width: 33%;
+}
+}
+
+// .recommended-teas-container {
+//   position: relative;
+//   background-color: red;
+//   top: 40px;
+//   left: 40px;
+//   top: 30%;
+//   left: 50%;
+//   display: block;
+//   font-size: 20px;
+//   font-weight: 400;
+//   width: 100%;
+//   transform: translate(-50%, 0%);
+//   // letter-spacing: 35px;
+// }
+
+.recommended-tea-card-container {
+  position: relative;
+  background-color: black;
+  top: 220px;
+  left: 50%;
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  width: 70%;
+  transform: translate(-50%, 0%);
+  // letter-spacing: 35px;
 }
 
 select {
@@ -109,7 +276,7 @@ form {
 }
 
 .main-data-div {
-  //height: auto; 
+  height: auto; 
   margin: 0 auto; 
 }
 
