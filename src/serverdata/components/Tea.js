@@ -1,44 +1,18 @@
 import React from 'react'
 
 const Tea = props => {
-  // const teaFlavors = props.tea.flavors.map(flavor => flavor.name)
-
-  // const flavorFrequency = {}
-
-  // for (let i = 0; i < teaFlavors.length; i++) {
-  //   const num = teaFlavors[i]
-  //   flavorFrequency[num] = flavorFrequency[num] ? flavorFrequency[num] + 1 : 1
-  // }
-
-  // const sortableFlavors = []
-  // for (const flavor in flavorFrequency) {
-  //   sortableFlavors.push([flavor, flavorFrequency[flavor]])
-  // }
-
-  // const sortedFavoriteFlavors = sortableFlavors.sort((a, b) => b[1] - a[1]).slice(0, 5)
-  
-  // const TeaTop5 = sortedFavoriteFlavors.flat()
-  //   .filter(item => typeof item === 'string')
-  //   .join(', ') 
-  
   return(
-    <div className="container">
-      <div className="row">
-        <div className="col">
+    <div className="media">
+      <img className="media-image col-sm-2" src={props.tea.picture} alt="Generic placeholder image"></img>
+      <div className="media-body">
+        <h5 className="mt-0">
           { props.tea.name }
-        </div>
-        <div className="col">
-          { props.tea.family }
-        </div>
-        <div className="col">
-          { props.tea.country}
-        </div>
-        <div className="col">
-          <span style={{fontWeight: '700'}}>Top 5 favorite flavors:</span> { props.tea.favorite_flavors.slice(0, 5).join(', ') }
-        </div>
-        <div className="col">
-          <img className="tea-picture" src={props.tea.picture}></img>
-        </div>
+        </h5>
+          A { props.tea.family } Tea from { props.tea.country} whose top five most liked
+          flavors by Teally users are <span className="tea-flavors">{ props.tea.favorite_flavors.slice(0, 4).join(', ') }, and {props.tea.favorite_flavors[5]} </span>
+        <br></br>
+          Click <a href={props.tea.info} target="_blank"><span>here</span></a> for more information.
+        
       </div>
     </div>
   )

@@ -63,7 +63,7 @@ class App extends Component {
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         
-        <main className>
+        <div className="app-main">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
           )} />
@@ -81,8 +81,8 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
           { user ? this.authenticatedOptions : null } 
-        </main>
-        <div>
+          {/* </div>
+        <div> */}
           <AuthenticatedRoute user={user} exact path='/create-tasting' render={() => (
             <TastingCreate user={user} teas={this.state.teas} flavors={this.state.flavors}
             />
