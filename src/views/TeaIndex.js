@@ -34,7 +34,6 @@ class TeaIndex extends Component {
       return (
         <Tea key={ index }
           tea={ tea }
-          // tastings= {this.state.tastings}
         />
       )
     })
