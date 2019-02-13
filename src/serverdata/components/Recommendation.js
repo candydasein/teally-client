@@ -27,7 +27,7 @@ class Recommendation extends Component {
     }))
 
     console.log(this.state.user.favorite_flavors)
-
+    
     const userTop5Flavors = this.state.user.favorite_flavors.slice(0, 5)
 
     const recommendedTeas = []

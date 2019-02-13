@@ -75,15 +75,11 @@ class TastingCreate extends Component {
             in the innermost rings, then moving outward until you find a specific flavor that matches what you detected.</p>
           <p>6. Choose up to 5 flavors from the menu below using the Command key on your keyboard, then hit submit.</p> 
         </div>  
-        <div className="flavorwheel-container">
-          <div className="span4">
-            <img className="img-fluid" src={Flavorwheel}></img>
-          </div>  
-        </div>
-           
-        <div className="tasting-form-container">
+        {/* <div className="flavorwheel-container"> */}
+        <div className="span4">
+          <img className="img-fluid" src={Flavorwheel}></img>
           <div className="float-right">
-            <form onSubmit={ this.createTasting }> 
+            <form className="tasting-form" onSubmit={ this.createTasting }> 
               <select className="tea-select" required
                 onChange={ this.onTeaChange }>
                 {this.props.teas.map((tea) => {
@@ -101,6 +97,29 @@ class TastingCreate extends Component {
               <input className="create-tasting-button" type="submit" value="Submit" /> 
             </form>
           </div>
+          {/* </div>   */}
+        </div>
+           
+        <div className="tasting-form-container">
+          {/* <div className="float-right">
+            <form onSubmit={ this.createTasting }> 
+              <select className="tea-select" required
+                onChange={ this.onTeaChange }>
+                {this.props.teas.map((tea) => {
+                  return (
+                    <option key={tea.id} data-key={tea.id}>{ tea.name }</option>
+                  )})}
+              </select>
+              <select className="flavor-select" multiple value={this.state.flavor_ids} 
+                onChange={this.onFlavorsChange}>
+                {this.props.flavors.map((flavor) => {
+                  return (
+                    <option key={flavor.id} value={flavor.id}>{ flavor.name }  ({flavor.first_parent})</option>
+                  )})}
+              </select>
+              <input className="create-tasting-button" type="submit" value="Submit" /> 
+            </form>
+          </div> */}
           {this.state.message && <span>{ this.state.message} </span> }
         </div>
       </div> 
