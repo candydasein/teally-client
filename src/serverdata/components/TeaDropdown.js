@@ -2,7 +2,7 @@ import React from 'react'
 
 const TeaDropdown = props => {
   return (
-    <option>{ props.name }</option>
+    <option>{ props.name } ({ props.first_parent})</option>
   )
 }
 

@@ -7,23 +7,17 @@ const Tasting = props => {
   const dateCreated = new Date(props.data.created_at)
   
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
+    <div className="media">
+      <div className="media-body">
+        <h5 className="mt-0">
           { props.data.tea.name }
-        </div>
-        <div className="col">
-          { props.data.id }
-        </div>
-        <div className="col">
-          { dateCreated.toDateString() }
-        </div>
-        <div className="col">
-          {tastingFlavors}
-        </div>
-        {/* <div className="col">
-          <img src={props.data.tea.picture}></img>
-        </div> */}
+        </h5>
+          Tasting #{ props.data.id }
+        <br></br>
+        
+         Tasted on { dateCreated.toDateString() }
+        <br></br>
+        You liked these flavors: {tastingFlavors}
       </div>
     </div>
   )
