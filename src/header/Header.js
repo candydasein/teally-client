@@ -7,10 +7,10 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to='/create-tasting'>New Tasting</Link>
     <Link to='/get-recommendations'>Get a Recommendation</Link>
-    <Link to='/tastings-index'>All My Tastings</Link>
-    <Link to='/tasting-show'>One Tasting</Link>
+    <Link to='/tastings-index'>See My Tastings</Link>
+    {/* <Link to='/tasting-show'>One Tasting</Link>
     <Link to='/tasting-delete/'>Delete a Tasting</Link>
-    <Link to='/update-tasting/'>Update a Tasting</Link>
+    <Link to='/update-tasting/'>Update a Tasting</Link> */}
     <Link to='/teas/'>View Teas</Link>
            
         

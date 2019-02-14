@@ -1,12 +1,12 @@
 $charcoal: #bbb;
 
-body {
-  background-color: black;
-}
+// body {
+//   background-color: rgb(255, 255, 255);
+// }
 
 .main-header {
   align-items: center;
-  //border-bottom: 1px solid $charcoal;
+  border-bottom: 1px solid rgba(187, 187, 187, 0.324);
   display: flex;
   height: 70px;
   padding: 0 10px;
@@ -53,6 +53,6 @@ body {
   }
 }
 
-.teally-title {
-  color: orange;
-}
+// .teally-title {
+//   color: orange;
+// }

@@ -17,13 +17,10 @@ class GetRecommendations extends Component {
   }
 
   // componentDidMount () {
-  //   axios.get(apiUrl + '/teas')
-  //     .then(res => {
-  //       this.setState({teas: res.data.teas }) 
-  //     })
-  // axios.get(apiUrl + '/users')
+  // axios.get(apiUrl + `/users/${this.props.user.id}`)
   //   .then(res => {
-  //     this.setState({users: res.data.users }) 
+  //     console.log(res.data)
+  //     this.setState({user: res.data.user }) 
   //   })
   // }
 
